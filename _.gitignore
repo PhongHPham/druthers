@@ -1,6 +1,6 @@
 ### node etc ###
 
-client/libs
+client/libs/
 
 # Logs
 logs
