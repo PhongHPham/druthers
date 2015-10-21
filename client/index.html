@@ -3,15 +3,44 @@
  <head>
    <meta charset="UTF-8">
    <title>Druthers</title>
+   <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="assets/one-page-wonder.css" rel="stylesheet">
  </head>
  <body>
+
+ <header class="header-image">
+        <div class="headline">
+            <div class="container">
+                <h1>Druthers</h1>
+                <h2>Pick Your President!</h2>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr class="featurette-divider">
+
+        <!-- First Featurette -->
+        <div class="featurette" id="about">
+            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <h2 class="featurette-heading">Enter your Twitter-
+                <span class="text-muted">find your match</span>
+            </h2>
+            <p class="lead">blah blah blah blah</p>
+        </div>
+
+        <hr class="featurette-divider">
+
+        </div>
 
   <div ui-view></div>
    
    <script src="libs/angular/angular.min.js"></script>
    <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
    <script src="libs/jquery/dist/jquery.min.js"></script>
-   <script src="libs/bootstrap/dist/css/bootstrap.min.css"></script>
+   <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 
    <script src="app/app.js"></script>
  </body>
