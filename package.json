@@ -1,0 +1,26 @@
+{
+  "name": "druthers",
+  "version": "1.0.0",
+  "description": "have a presidential candidate picked for you!",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhongHPham/druthers.git"
+  },
+  "author": "Phong Pham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhongHPham/druthers/issues"
+  },
+  "homepage": "https://github.com/PhongHPham/druthers#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongodb": "^2.0.46",
+    "mongoose": "^4.1.12",
+    "twitter": "^1.2.5"
+  }
+}
