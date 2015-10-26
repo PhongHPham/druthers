@@ -1,7 +1,7 @@
 var Twitter = require('twitter');
  
 var client = new Twitter({
-  // keys taken out for commits
+// keys taken out for commit
 });
  
 // var params = {screen_name: 'nodejs'};
@@ -39,20 +39,14 @@ var getFormattedTweetsByHandle = function (twitterHandle, callback) {
 
 
 
-
-
-
-
-
-
-getFormattedTweetsByHandle('nodejs', function(err, giantString) {
-  if (err) {
-    console.log(err);
-  } else {
-    // do something with giantString
-    console.log('SUCCESS', giantString)
-  }
-});
+// getFormattedTweetsByHandle('nodejs', function(err, giantString) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     // do something with giantString
+//     console.log('SUCCESS', giantString)
+//   }
+// });
 
 module.exports = {
 
