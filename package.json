@@ -21,6 +21,7 @@
     "express": "^4.13.3",
     "mongodb": "^2.0.46",
     "mongoose": "^4.2.2",
-    "twitter": "^1.2.5"
+    "twitter": "^1.2.5",
+    "watson-developer-cloud": "^0.10.6"
   }
 }
