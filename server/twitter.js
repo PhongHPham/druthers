@@ -1,8 +1,14 @@
 var Twitter = require('twitter');
- 
+var twitterKeys = require('../client/libs/config.js');
+console.log('da keys, BOSS!', twitterKeys.twitter);
 var client = new Twitter({
-  // take out keys for commit
+    consumer_key: twitterKeys.twitter.consumer_key,
+    consumer_secret: twitterKeys.twitter.consumer_secret,
+    access_token_key: twitterKeys.twitter.access_token_key,
+    access_token_secret: twitterKeys.twitter.access_token_secret 
 });
+
+
  
 // var params = {screen_name: 'nodejs'};
 // client.get('statuses/user_timeline', params, function(error, tweets, response){
@@ -39,14 +45,14 @@ var getFormattedTweetsByHandle = function (twitterHandle, callback) {
 
 
 
-// getFormattedTweetsByHandle('nodejs', function(err, giantString) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     // do something with giantString
-//     console.log('SUCCESS', giantString)
-//   }
-// });
+getFormattedTweetsByHandle('nodejs', function(err, giantString) {
+  if (err) {
+    console.log(err);
+  } else {
+    // do something with giantString
+    console.log('SUCCESS', giantString)
+  }
+});
 
 module.exports = {
 

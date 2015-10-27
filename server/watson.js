@@ -1,8 +1,11 @@
 var watson = require('watson-developer-cloud');
 var twitter = require('./twitter.js');
+var watsonKeys = require('../client/libs/config.js');
 
 var personality_insights = watson.personality_insights({
-  // take out keys for commit
+  username: watsonKeys.watson.username,
+  password: watsonKeys.watson.password,
+  version: watsonKeys.watson.version
 });
 
 personality_insights.profile({
