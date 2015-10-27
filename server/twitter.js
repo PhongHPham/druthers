@@ -1,7 +1,7 @@
 var Twitter = require('twitter');
  
 var client = new Twitter({
-// keys taken out for commit
+  // take out keys for commit
 });
  
 // var params = {screen_name: 'nodejs'};
