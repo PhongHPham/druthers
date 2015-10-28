@@ -21,7 +21,17 @@ exports.retrieveAll = function (callback) {
 
 // retrieveById method
 
+
 // update method
+exports.updateScore = function (score, callback) {
+  User.findOneAndUpdate({score: score}, {upsert: false, new: true}, function (err, result) {
+    if (err) {
+      callback(err);
+    } else {
+      calback(result);
+    }
+  });
+};
 
 // delete method
 
