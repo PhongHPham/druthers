@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+ <html ng-app="druthers">
+ <head>
+   <meta charset="UTF-8">
+   <title>Druthers</title>
+   <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="assets/one-page-wonder.css" rel="stylesheet">
+ </head>
+ <body>
+
+ <header class="header-image">
+        <div class="headline">
+            <div class="container">
+                <h1>Druthers</h1>
+                <h2>Pick Your President!</h2>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <hr class="featurette-divider">
+
+        <!-- twitter in put and candidate pic-->
+        <div class="row" id="about">
+          <div ui-view="twitter-input"></div>
+          <div ui-view="candidate-pic"></div>
+        </div>
+
+    </div>
+
+  <div ui-view></div>
+   
+   <script src="libs/angular/angular.min.js"></script>
+   <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+   <script src="libs/jquery/dist/jquery.min.js"></script>
+   <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+   <script src="app/app.js"></script>
+   <script src="app/controllers/candidatePicController.js"></script>
+   <script src="app/controllers/indexController.js"></script>
+   <script src="app/controllers/twitterInputController.js"></script>
+ </body>
+ </html>
