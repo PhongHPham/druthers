@@ -40,5 +40,14 @@ apiRouter.route('/candidates')
     });
   });
 
+apiRouter.route('/candidates/:id')
+  .get(function (request, response) {
+    candidateController.retrieveById(request.params.id, function (err, result) {
+      if (err) {
+        response.send(err);
+      }
+      response.json(result);
+    });
+  });
 
 module.exports = apiRouter;
