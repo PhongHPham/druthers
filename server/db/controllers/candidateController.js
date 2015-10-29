@@ -20,11 +20,20 @@ exports.retrieveAll = function (callback) {
 };
 
 // retrieveById method
+exports.retrieveById = function (id, callback) {
+  Candidate.findOne({id: id}, function(err, found) {
+    if (err) {
+      callback(err);
+    } else {
+      callback(found);
+    }
+  });
+};
 
 
 // update method
 exports.updateScore = function (score, callback) {
-  User.findOneAndUpdate({score: score}, {upsert: false, new: true}, function (err, result) {
+  Candidate.findOneAndUpdate({score: candidate.score}, {upsert: false, new: true}, function (err, result) {
     if (err) {
       callback(err);
     } else {
@@ -34,4 +43,13 @@ exports.updateScore = function (score, callback) {
 };
 
 // delete method
+exports.delete = function (candidate, callback) {
+  Candidate.findOneAndRemove({name: candidate.name}, function (err, doc, callback) {
+    if (err) {
+      callback(err);
+    } else {
+      callback(result);
+    }
+  });
+};
 
