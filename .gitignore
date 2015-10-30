@@ -1,6 +1,7 @@
 ### node etc ###
 
 client/libs/
+server/config.js
 
 # Logs
 logs
