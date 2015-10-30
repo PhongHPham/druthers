@@ -7,8 +7,8 @@ var client = new Twitter({
     access_token_key: twitterKeys.twitter.access_token_key,
     access_token_secret: twitterKeys.twitter.access_token_secret 
 });
-var Watson = require('./watson.js');
-var Promise = require('bluebird');
+// var Watson = require('./watson.js');
+// var Promise = require('bluebird');
 
  
 // var params = {screen_name: 'nodejs'};
@@ -52,14 +52,14 @@ exports.getFormattedTweetsByHandle = function (twitterHandle, callback) {
 
 };
 
-var getTweetsP = Promise.promisify(exports.getFormattedTweetsByHandle);
-var analyzeTweetsP = Promise.promisify(Watson.getPersonalityInsights);
+// var getTweetsP = Promise.promisify(exports.getFormattedTweetsByHandle);
+// var analyzeTweetsP = Promise.promisify(Watson.getPersonalityInsights);
 
-getTweetsP('nodejs').then(function (giantString) {
-  analyzeTweetsP(giantString).then(function (results) {
-    console.log(results);
-  });
-});
+// getTweetsP('nodejs').then(function (giantString) {
+//   analyzeTweetsP(giantString).then(function (results) {
+//     console.log(results);
+//   });
+// });
 
 // exports.getFormattedTweetsByHandle('nodejs', function(err, giantString) {
 //   if (err) {
