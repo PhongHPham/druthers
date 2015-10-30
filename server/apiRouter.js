@@ -40,5 +40,23 @@ apiRouter.route('/candidates')
     });
   });
 
+apiRouter.route('/candidates/:id')
+  .get(function (request, response) {
+    candidateController.retrieveById(request.params.id, function (err, result) {
+      if (err) {
+        response.send(err);
+      }
+      response.json(result);
+    });
+  })
+
+  .delete(function (request, response) {
+    candidateController.findOneAndRemove(request.params.id, function (err, result) {
+      if (err) {
+        response.json('Candidate doesn\'t exist');
+      }
+      response.json(result);
+    });
+  });
 
 module.exports = apiRouter;

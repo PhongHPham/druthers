@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/PhongHPham/druthers#readme",
   "dependencies": {
+    "bluebird": "^3.0.2",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "mongodb": "^2.0.46",
