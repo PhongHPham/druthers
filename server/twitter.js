@@ -1,5 +1,5 @@
 var Twitter = require('twitter');
-var twitterKeys = require('../client/libs/config.js');
+var twitterKeys = require('./config.js');
 console.log('da keys, BOSS!', twitterKeys.twitter);
 var client = new Twitter({
     consumer_key: twitterKeys.twitter.consumer_key,
@@ -7,7 +7,8 @@ var client = new Twitter({
     access_token_key: twitterKeys.twitter.access_token_key,
     access_token_secret: twitterKeys.twitter.access_token_secret 
 });
-
+var Watson = require('./watson.js');
+var Promise = require('bluebird');
 
  
 // var params = {screen_name: 'nodejs'};
@@ -18,7 +19,7 @@ var client = new Twitter({
 // });
 
 
-var getFormattedTweetsByHandle = function (twitterHandle, callback) {
+exports.getFormattedTweetsByHandle = function (twitterHandle, callback) {
   // params variable to get twitterHandle in format for get method
   var params = {screen_name: twitterHandle};
   // build out a giant string of all the user's tweets
@@ -26,7 +27,7 @@ var getFormattedTweetsByHandle = function (twitterHandle, callback) {
   // use instantiation of Twitter library to get statuses for user
   client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (error) {
-      callback(error, null);
+      callback(error);
     } else { 
       // do something with tweets
       // it's going to be an array of objects so i want to loop through array and target 
@@ -37,27 +38,38 @@ var getFormattedTweetsByHandle = function (twitterHandle, callback) {
         }
       }
       // console.log(giantString);
+      // callback(null, giantString);
       callback(null, giantString);
+      // Watson.getPersonalityInsights(giantString, function(error, result) {
+      //   if (error) {
+      //     callback(error);
+      //   } else {
+      //     callback(null, result);
+      //   }
+      // });
     }
   });
 
 };
 
+var getTweetsP = Promise.promisify(exports.getFormattedTweetsByHandle);
+var analyzeTweetsP = Promise.promisify(Watson.getPersonalityInsights);
 
-
-getFormattedTweetsByHandle('nodejs', function(err, giantString) {
-  if (err) {
-    console.log(err);
-  } else {
-    // do something with giantString
-    console.log('SUCCESS', giantString)
-  }
+getTweetsP('nodejs').then(function (giantString) {
+  analyzeTweetsP(giantString).then(function (results) {
+    console.log(results);
+  });
 });
 
-module.exports = {
+// exports.getFormattedTweetsByHandle('nodejs', function(err, giantString) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     // do something with giantString
+//     console.log('SUCCESS', giantString)
+//   }
+// });
 
-getFormattedTweetsByHandle: getFormattedTweetsByHandle
 
-};
 
 
