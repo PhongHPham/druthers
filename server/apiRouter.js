@@ -48,6 +48,15 @@ apiRouter.route('/candidates/:id')
       }
       response.json(result);
     });
+  })
+
+  .delete(function (request, response) {
+    candidateController.findOneAndRemove(request.params.id, function (err, result) {
+      if (err) {
+        response.json('Candidate doesn\'t exist');
+      }
+      response.json(result);
+    });
   });
 
 module.exports = apiRouter;
