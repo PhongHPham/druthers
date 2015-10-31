@@ -8,8 +8,6 @@ var personality_insights = watson.personality_insights({
   version: watsonKeys.watson.version
 });
 
-
-
 exports.getPersonalityInsights = function (giantString, callback) {
   personality_insights.profile({
     // TODO pass in giantString
