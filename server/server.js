@@ -7,8 +7,8 @@ var mongoose = require('mongoose');
 // app.use(bodyParser.json());
 // var apiRouter = app.Router();
 
-var logger = function (req, res, next) {
-  console.log('Client hit: ' + req.url);
+var logger = function (request, response, next) {
+  console.log('Client hit: ' + request.url);
   next();
 };
 
