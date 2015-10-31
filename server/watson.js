@@ -13,9 +13,9 @@ exports.getPersonalityInsights = function (giantString, callback) {
     // TODO pass in giantString
     text: giantString,
     language: 'en' },
-    function (err, response) {
-      if (err)
-        callback(err);
+    function (error, response) {
+      if (error)
+        callback(error);
       else
         callback(null, JSON.stringify(response, null, 2));
   });

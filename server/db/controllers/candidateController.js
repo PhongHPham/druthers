@@ -2,9 +2,9 @@ var Candidate = require('../models/Candidate.js');
 
 // create method
 exports.create = function (candidate, callback) {
-  Candidate.findOne({name: candidate.name}, function(err, found) {
-    if (err) {
-      callback(err);
+  Candidate.findOne({name: candidate.name}, function(error, found) {
+    if (error) {
+      callback(error);
     } else if (found) {
       callback('Candidate already exists');
     } else {
@@ -21,8 +21,8 @@ exports.retrieveAll = function (callback) {
 
 // retrieveById method
 exports.retrieveById = function (id, callback) {
-  Candidate.findOne({id: id}, function(err, found) {
-    if (err) {
+  Candidate.findOne({id: id}, function(error, found) {
+    if (error) {
       callback(err);
     } else {
       callback(found);
@@ -32,10 +32,10 @@ exports.retrieveById = function (id, callback) {
 
 
 // update method
-exports.updateScore = function (score, callback) {
-  Candidate.findOneAndUpdate({score: candidate.score}, {upsert: false, new: true}, function (err, result) {
-    if (err) {
-      callback(err);
+exports.updateScore = function (name, newScore, callback) {
+  Candidate.findOneAndUpdate({name: name}, {score: newScore}, {upsert: false, new: true}, function (error, result) {
+    if (error) {
+      callback(error);
     } else {
       calback(result);
     }
@@ -44,9 +44,9 @@ exports.updateScore = function (score, callback) {
 
 // delete method
 exports.delete = function (candidate, callback) {
-  Candidate.findOneAndRemove({name: candidate.name}, function (err, doc, callback) {
-    if (err) {
-      callback(err);
+  Candidate.findOneAndRemove({name: candidate.name}, function (error, doc, callback) {
+    if (error) {
+      callback(error);
     } else {
       callback(result);
     }
