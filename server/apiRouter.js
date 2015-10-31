@@ -61,7 +61,10 @@ apiRouter.route('/candidates/:id')
 
   .put(function (request, response) {
     candidateController.updateScore(request.params.id, function (error, result) {
-
+      if (error) {
+        response.json('Candidate not found');
+      }
+      response.json(result);
     });
   });
 
