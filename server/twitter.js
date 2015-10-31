@@ -7,17 +7,6 @@ var client = new Twitter({
     access_token_key: twitterKeys.twitter.access_token_key,
     access_token_secret: twitterKeys.twitter.access_token_secret 
 });
-var Watson = require('./watson.js');
-var Promise = require('bluebird');
-
- 
-// var params = {screen_name: 'nodejs'};
-// client.get('statuses/user_timeline', params, function(error, tweets, response){
-//   if (!error) {
-//     console.log(tweets);
-//   }
-// });
-
 
 exports.getFormattedTweetsByHandle = function (twitterHandle, callback) {
   // params variable to get twitterHandle in format for get method
@@ -37,39 +26,7 @@ exports.getFormattedTweetsByHandle = function (twitterHandle, callback) {
           giantString += tweets[i].text;
         }
       }
-      // console.log(giantString);
-      // callback(null, giantString);
       callback(null, giantString);
-      // Watson.getPersonalityInsights(giantString, function(error, result) {
-      //   if (error) {
-      //     callback(error);
-      //   } else {
-      //     callback(null, result);
-      //   }
-      // });
     }
   });
-
 };
-
-var getTweetsP = Promise.promisify(exports.getFormattedTweetsByHandle);
-var analyzeTweetsP = Promise.promisify(Watson.getPersonalityInsights);
-
-getTweetsP('nodejs').then(function (giantString) {
-  analyzeTweetsP(giantString).then(function (results) {
-    console.log(results);
-  });
-});
-
-// exports.getFormattedTweetsByHandle('nodejs', function(err, giantString) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     // do something with giantString
-//     console.log('SUCCESS', giantString)
-//   }
-// });
-
-
-
-
