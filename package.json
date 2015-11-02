@@ -4,7 +4,8 @@
   "description": "have a presidential candidate picked for you!",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node ./server/createCandidates.js"
   },
   "repository": {
     "type": "git",

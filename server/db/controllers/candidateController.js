@@ -25,7 +25,7 @@ exports.retrieveById = function (id, callback) {
     if (error) {
       callback(err);
     } else {
-      callback(found);
+      callback(null, found);
     }
   });
 };
@@ -37,7 +37,7 @@ exports.updateScore = function (name, newScore, callback) {
     if (error) {
       callback(error);
     } else {
-      calback(result);
+      calback(null, result);
     }
   });
 };
@@ -48,7 +48,17 @@ exports.delete = function (candidate, callback) {
     if (error) {
       callback(error);
     } else {
-      callback(result);
+      callback(null, result);
+    }
+  });
+
+};
+exports.setPersonality = function (candidate, profile, callback) {
+  Candidate.findOneAndUpdate({name: candidate.name}, profile, {upsert: false, new: true}, function (error, result) {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, result);
     }
   });
 };
