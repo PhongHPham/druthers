@@ -5,7 +5,7 @@ angular.module('duthers.services', [])
 
   // when user submits twitter handle getTweets call factory function
   this.getTweets = function (twitterHandle) {
-    twitterServices.getGiantString(twitterHandle)
+    twitterServices.getMatchWithTwitterHandle(twitterHandle)
       .then(function (string) {
         console.log(string);
       });
