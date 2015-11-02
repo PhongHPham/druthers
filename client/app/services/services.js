@@ -1,10 +1,10 @@
 app.factory('twitterServices', function ($http) {
 
   // sends a 
-  var getGiantString = function () {
+  var getMatchWithTwitterHandle = function (twitterHandle) {
     return $http({
       method: 'GET',
-      url: '/api/'
+      url: '/api/twitter/:twitterHandle'
     })
     .then(function (response) {
       return response.data;
