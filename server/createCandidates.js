@@ -12,7 +12,6 @@ var candidates = [['Donald Trump', 'realDonaldTrump', 'http://www.greanvillepost
                   ['Jeb Bush', 'JebBush', 'https://i.imgur.com/NTmJ5Ct.jpg'],
                   ['John Kasich', 'JohnKasich', 'https://i.imgur.com/o7JyBOC.jpg'],
                   ['Lawrence Lessig', 'lessig', 'https://i.imgur.com/xlU7YZS.jpg'],
-                  ['Lindsey Graham', 'LindseyGrahamSC', 'https://i.imgur.com/BXSCCD2.jpg'],
                   ['Marco Rubio', 'marcorubio', 'https://i.imgur.com/tkuphbJ.jpg'],
                   ['Martin O\'Malley', 'MartinOMalley', 'https://i.imgur.com/oL8ijqx.jpg'],
                   ['Mike Huckabee', 'GovMikeHuckabee', 'https://i.imgur.com/5uZIgnV.jpg'],
