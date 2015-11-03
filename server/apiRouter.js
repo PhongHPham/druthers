@@ -43,15 +43,15 @@ apiRouter.route('/candidates')
 apiRouter.route('/candidates/:id')
   .get(function (request, response) {
     candidateController.retrieveById(request.params.id, function (error, result) {
-      if (err) {
-        response.send(err);
+      if (error) {
+        response.send(error);
       }
       response.json(result);
     });
   })
 
   .delete(function (request, response) {
-    candidateController.findOneAndRemove(request.params.id, function (error, result) {
+    candidateController.delete(request.params.id, function (error, result) {
       if (error) {
         response.json('Candidate doesn\'t exist');
       }
