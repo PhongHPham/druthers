@@ -1,22 +1,30 @@
 var apiRouter = require('express').Router();
-var twitter = require('./twitter.js');
+var analyzeTweets = require('./analyzeTweets.js');
 var candidateController = require('./db/controllers/candidateController.js');
-
+var generateMatch = require('./generateMatch.js');
 apiRouter.route('/twitter/:twitterHandle')
   .get(function (request, response) {
     //response.send('you\'ve requested' + request.params.twitterHandle);
-    twitter.getFormattedTweetsByHandle(request.params.twitterHandle, function(error, result) {
-      if (error) {
-        response.send('there was an error sending your tweet: ' + err);
-      }
+    analyzeTweets(request.params.twitterHandle).then(function (personality) {
+      // if (error) {
+      //   response.send('there was an error sending your tweet: ' + err);
+        candidateController.retrieveAll(function (error, candidates) {
+          if (error) {
+            response.json(error);
+          } else {
+            var match = generateMatch(personality, candidates);
+            response.json(match);
+          }
+        })
+      });
 
-      response.json(result);
+      // response.json(result);
         // watson.analyzeTweet(result, function(err, score) {
         //   var candidate = utilities.compareScore(score)
         //   res.send(utils.candidates[candidate])
         // })
       
-    });
+    
   });
 
 apiRouter.route('/candidates')
