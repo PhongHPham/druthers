@@ -1,6 +1,5 @@
 app.factory('twitterServices', function ($http) {
 
-  // sends a 
   var getMatchWithTwitterHandle = function (twitterHandle) {
     return $http({
       method: 'GET',

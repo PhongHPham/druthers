@@ -19,10 +19,7 @@ app.use(express.static(__dirname + '/../client'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', logger, apiRouter);
-// app.get('/api/blah/blah/blah', function (request, response) {
-//   response.json('blahlbahlbah');
 
-//   })
 
 app.listen('9000', function() {
   console.log('listening on 9000');

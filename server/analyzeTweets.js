@@ -24,5 +24,7 @@ var analyzePersonality = function(username, callback) {
   });
 };
 
-module.exports = Promise.promisify(analyzePersonality);
+var analyzePersonalityP = Promise.promisify(analyzePersonality);
+
+module.exports = analyzePersonalityP;
 
