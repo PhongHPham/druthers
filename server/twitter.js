@@ -1,6 +1,5 @@
 var Twitter = require('twitter');
 var twitterKeys = require('./config.js');
-console.log('da keys, BOSS!', twitterKeys.twitter);
 var client = new Twitter({
     consumer_key: twitterKeys.twitter.consumer_key,
     consumer_secret: twitterKeys.twitter.consumer_secret,
