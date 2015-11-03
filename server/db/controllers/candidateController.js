@@ -16,7 +16,7 @@ exports.createOne = function (candidate, callback) {
 
 exports.createMany = function (candidates, callback) {
   Candidate.create(candidates, callback);
-}
+};
 
 // retrieveAll method
 exports.retrieveAll = function (callback) {

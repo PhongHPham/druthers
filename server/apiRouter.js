@@ -15,7 +15,7 @@ apiRouter.route('/twitter/:twitterHandle')
             var match = generateMatch(personality, candidates);
             response.json(match);
           }
-        })
+        });
       });
 
       // response.json(result);
