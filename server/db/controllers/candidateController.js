@@ -1,7 +1,7 @@
 var Candidate = require('../models/Candidate.js');
 
 // create method
-exports.create = function (candidate, callback) {
+exports.createOne = function (candidate, callback) {
   Candidate.findOne({name: candidate.name}, function(error, found) {
     if (error) {
       callback(error);
@@ -13,6 +13,10 @@ exports.create = function (candidate, callback) {
   });
 
 };
+
+exports.createMany = function (candidates, callback) {
+  Candidate.create(candidates, callback);
+}
 
 // retrieveAll method
 exports.retrieveAll = function (callback) {
