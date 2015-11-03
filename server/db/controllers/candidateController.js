@@ -37,18 +37,18 @@ exports.updateScore = function (name, newScore, callback) {
     if (error) {
       callback(error);
     } else {
-      calback(null, result);
+      callback(null, result);
     }
   });
 };
 
 // delete method
-exports.delete = function (candidate, callback) {
-  Candidate.findOneAndRemove({name: candidate.name}, function (error, doc, callback) {
+exports.delete = function (id, callback) {
+  Candidate.findOneAndRemove({_id: id}, function (error, doc) {
     if (error) {
       callback(error);
     } else {
-      callback(null, result);
+      callback(null, doc);
     }
   });
 
