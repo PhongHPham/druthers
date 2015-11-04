@@ -6,11 +6,12 @@ app.factory('twitterServices', function ($http) {
       url: '/api/twitter/' + twitterHandle
     })
     .then(function (response) {
-      console.log('returning the pic!!!! :', response.data.imageUrl)
-      return response.data;
+      return response.data.imageUrl;
     });
   };
+
+
   return {
-    getMatchWithTwitterHandle: getMatchWithTwitterHandle
+    getMatchWithTwitterHandle: getMatchWithTwitterHandle,
   };
 });
