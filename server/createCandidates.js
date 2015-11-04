@@ -3,6 +3,7 @@ var candidateController = require('./db/controllers/candidateController.js');
 var Promise = require('bluebird');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/druthers');
+// candidates array for populating db
 var candidates = [['Donald Trump', 'realDonaldTrump', 'https://i.imgur.com/Agz1KPg.jpg'],
                   ['Ben Carson', 'realDonaldTrump', 'https://i.imgur.com/tdyvY5C.jpg'],
                   ['Bernie Sanders', 'BernieSanders', 'https://i.imgur.com/egXkZtv.jpg'],
