@@ -1,7 +1,7 @@
 ### node etc ###
 
 client/libs/
-server/config.js
+server/credentials.js
 
 # Logs
 logs
