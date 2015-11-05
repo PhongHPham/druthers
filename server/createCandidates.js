@@ -1,6 +1,7 @@
 var analyzeTweets = require('./analyzeTweets.js');
 var candidateController = require('./db/controllers/candidateController.js');
 var Promise = require('bluebird');
+var config = require("./config");
 var mongoose = require('mongoose');
 // candidates array for populating db
 var candidates = [['Donald Trump', 'realDonaldTrump', 'https://i.imgur.com/Agz1KPg.jpg'],
@@ -68,7 +69,7 @@ exports.populateDb = populateDatabase;
 // Note:  NEVER  start the server using `node server uc`
 if (process.argv[2] === "uc") {
   console.log("Using the command line to update candidates.")
-  mongoose.connect('mongodb://localhost/druthers');
+  mongoose.connect(config.mongo_db);
   populateDatabase(function (error, result) {
     mongoose.disconnect();
     if (error) {

@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var apiRouter = require('./apiRouter.js');
 var mongoose = require('mongoose');
+var config = require("./config");
 // app.use(bodyParser.json());
 // var apiRouter = app.Router();
 
@@ -16,7 +17,7 @@ var logger = function (request, response, next) {
 var cronjob = require("./cronjob");
 cronjob.start();
 
-mongoose.connect('mongodb://localhost/druthers');
+mongoose.connect(config.mongo_db);
 
 app.use(express.static(__dirname + '/../client'));
 
@@ -26,6 +27,8 @@ app.use('/api', logger, apiRouter);
 
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || 9000;
-app.listen(port, function() {
+var ip = process.env.OPENSHIFT_NODEJS_IP  ||  "127.0.0.1";
+console.log(ip, port);
+app.listen(port, ip, function() {
   console.log('listening on: ' +  port );
 });
