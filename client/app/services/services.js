@@ -6,7 +6,7 @@ app.factory('twitterServices', function ($http) {
       url: '/api/twitter/' + twitterHandle
     })
     .then(function (response) {
-      return response.data.imageUrl;
+      return response.data;
     });
   };
 
