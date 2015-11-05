@@ -18,12 +18,14 @@
   },
   "homepage": "https://github.com/PhongHPham/druthers#readme",
   "dependencies": {
-    "bluebird": "^3.0.2",
-    "body-parser": "^1.14.1",
     "express": "^4.13.3",
+    "body-parser": "^1.14.1",
     "mongodb": "^2.0.46",
+    "cron": "^1.0.9",
+    "bluebird": "^3.0.2",
     "mongoose": "^4.2.2",
     "twitter": "^1.2.5",
     "watson-developer-cloud": "^0.10.6"
-  }
+  },
+  "devDependencies": {}
 }
