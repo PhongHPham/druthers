@@ -1,6 +1,6 @@
-app.controller('CandidatePicController', ['twitterServices', function (twitterServices, $rootscope) {
+// app.controller('CandidatePicController', ['twitterServices', function (twitterServices, $rootscope) {
 
-  this.match = twitterServices.getPic();
+//   this.match = twitterServices.getPic();
 
     
-}]);
+// }]);
