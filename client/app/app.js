@@ -18,8 +18,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       },
       'candidate-pic': {
         templateUrl: 'app/views/candidate-pic.html',
-        controller: 'CandidatePicController',
-        controllerAs: 'pic'
+        controller: 'TwitterInputController',
+        controllerAs: 'twitterCtrl'
       }
     }
   });
