@@ -11,10 +11,9 @@
     var lowestDif = Infinity;
     var candidateMatch;
     var difs = {};
-      var curDif = 0;
 
     for (var i = 0; i < candidates.length; i++) {
-      
+      var curDif = 0;
       for (var trait in userPersonality) {
         curDif += Math.abs(userPersonality[trait] - candidates[i][trait]);
         if (curDif < lowestDif) {
