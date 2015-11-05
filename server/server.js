@@ -12,6 +12,10 @@ var logger = function (request, response, next) {
   next();
 };
 
+// Start the cron job
+var cronjob = require("./cronjob");
+cronjob.start();
+
 mongoose.connect('mongodb://localhost/druthers');
 
 app.use(express.static(__dirname + '/../client'));
@@ -21,6 +25,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api', logger, apiRouter);
 
 
-app.listen('9000', function() {
-  console.log('listening on 9000');
+var port = process.env.OPENSHIFT_NODEJS_PORT || 9000;
+app.listen(port, function() {
+  console.log('listening on: ' +  port );
 });

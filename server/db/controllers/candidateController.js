@@ -1,4 +1,4 @@
-var Candidate = require('../models/Candidate.js');
+  var Candidate = require('../models/Candidate.js');
 
 // create method
 exports.createOne = function (candidate, callback) {
@@ -12,6 +12,50 @@ exports.createOne = function (candidate, callback) {
     }
   });
 
+};
+
+exports.updateOrCreate = function (candidates, callback) {
+
+  // Timeline:             --------------------------------------------------------
+  // Update BenCarson:     |-------------------------> Finish
+  // Update HillaryClinton |-------------------------------------> Finish
+  // Update Donald         |---->  Finish (FAILED)
+
+  // candidates.length = 3
+  // complete = 0;
+
+  // Donald:  1 !== 3
+  // Ben Carson 2 !== 3
+  // Hillary Clinton 3 === 3 ===>  Callback
+      // This will make sure that there is always a callback function to call
+      // (which is not `undefined`)
+    callback = callback ||  function (error) {
+        if (error) { throw error; }
+    };
+    var complete = 0;
+/// ++ complete => 1
+// complete++ => 0, complete === 1
+    var errors = [];
+    var checkComplete = function (error) {
+        if (error) {
+           errors.push(error);
+        }
+        // Everything is done (all the requests are complete)
+        if (++complete === candidates.length) {
+          callback(errors.length ?  errors : null, candidates);
+        }
+    };
+
+    var updateOrCreateCandidate = function (currentCandidate) {
+        Candidate.update({
+          name: currentCandidate.name
+        }, currentCandidate, {
+          upsert:  true
+        }, checkComplete);
+    };
+    for (var i = 0; i <  candidates.length; ++i) {
+        updateOrCreateCandidate(candidates[i]);
+    }
 };
 
 exports.createMany = function (candidates, callback) {
@@ -37,7 +81,7 @@ exports.retrieveById = function (id, callback) {
 
 // update method
 exports.updateScore = function (name, newScore, callback) {
-  Candidate.findOneAndUpdate({name: name}, {score: newScore}, {upsert: false, new: true}, function (error, result) {
+  Candidate.findOneAndUpdate({name: name}, {score: newScore }, {upsert: false, new: true}, function (error, result) {
     if (error) {
       callback(error);
     } else {

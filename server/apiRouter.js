@@ -4,8 +4,11 @@ var candidateController = require('./db/controllers/candidateController.js');
 var generateMatch = require('./generateMatch.js');
 apiRouter.route('/twitter/:twitterHandle')
   .get(function (request, response) {
+
+
     //response.send('you\'ve requested' + request.params.twitterHandle);
     analyzeTweets(request.params.twitterHandle).then(function (personality) {
+      
       // if (error) {
       //   response.send('there was an error sending your tweet: ' + err);
         candidateController.retrieveAll(function (error, candidates) {
