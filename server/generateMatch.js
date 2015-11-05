@@ -48,7 +48,7 @@ function getPersonScore (input)  {
     var lastMachingIndex = -1;
 
     // Iterate the candidates' scores
-    candidatesScores.forEach(function (cCandidate, index)  {
+    candidatesScores.forEach(function (cCandidateScore, index)  {
         // Make the difference
         var cDiff = Math.abs(userScore - cCandidateScore.score);
 
