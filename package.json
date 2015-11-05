@@ -6,7 +6,8 @@
   "scripts": {
     "test": "test",
     "start":  "node server/server",
-    "create-candidates": "node ./server/createCandidates.js uc"
+    "create-candidates": "node ./server/createCandidates.js uc",
+     "postinstall":  "bower install"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
     "bluebird": "^3.0.2",
     "mongoose": "^4.2.2",
     "twitter": "^1.2.5",
-    "watson-developer-cloud": "^0.10.6"
+    "watson-developer-cloud": "^0.10.6",
+    "bower": "*"
   },
   "devDependencies": {}
 }
