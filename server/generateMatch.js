@@ -1,58 +1,102 @@
 
+// Get the person's score
+// This function will work for candidates and users (input twitter accounts)
+function getPersonScore (input)  {
+
+  // These are the keys that are used in the score sum
+  var keys = [
+     "Openness", "Conscientiousness",
+     "Extraversion", "Agreeableness",
+     "Emotional range"
+  ];
+
+  // Initialize the score
+  var score = 0;
+  // Iterate the keys
+  for (var i = 0; i < keys.length; ++i) {
+    // Sum the values
+    score += input[keys[i]];
+  }
+
+  // And finally, return the score
+  return score;
+}
 
   // return image link for lowest difference candidate
   var generateMatch = function (userPersonality, candidates) {
-    var lowestDif = Infinity;
-    var candidateMatch; 
-    // make difs object for debugging
-    var difs = {};
-    var userPersonalityScore = 0;
-    var candidateScore = 0;
 
+    // Get the Twitter user's score
+    var userScore = getPersonScore(userPersonality);
 
-    // for (var userTrait in userPersonality) {
-    //   userPersonalityScore += userPersonality[userTrait];
-    // }
+    // Get the candidate scores (an array of objects containing `score` and `name` fields)
+    var candidatesScores = candidates.map(function (cCandidate) {
+        return {
+            // Get the candidate's score
+            score: getPersonScore(cCandidate)
 
-    // console.log(userPersonality)
-    // console.log(candidates[0])
-  // iterate over candidates array
-    for (var i = 0; i < candidates.length; i++) {
-      // current difference starts as 0
-      var curDif = 0;
-      // for each candidate, loop over their user's personality traits object
-      for (var trait in userPersonality) {
-        // console.log(trait)
-        // for each trait calculate distance of absolute trait values
-        // between userPersonality and current candidate's traits
-        // console.log(trait)
-        // console.log(candidates[i][trait])
-        userPersonalityScore += userPersonality[trait];
-        candidateScore += candidates[i][trait];
+            // This is the current candidate  name
+          , name:  cCandidate.name// TODO
+        };
+    });
+    // [{ score:  Number, name String}, {...}, ...]
 
+    // This is another way to do it
+    // Lowest diff will be the lowest score diffrence
+    var lowestDiff = Infinity;
 
-      curDif = Math.abs(userPersonalityScore - candidateScore);
-      }
+    // Get the correct maching index
+    var lastMachingIndex = -1;
 
-      // console.log(curDif)
-      // check if difference lower than lowest difference
-      if (curDif < lowestDif) {
-        // set key value pair of current candidate and current difference to 
-        // check what we're getting
-        difs[candidates[i].name] = curDif;
-        // set current difference as lowest difference
-        lowestDif = curDif;
-        // candidateMatch is going be current candidate if it's difference is still lowest
-        candidateMatch = candidates[i];
-      }
-      // reset user and candidate personality scores
-      userPersonalityScore = 0;
-      candidateScore = 0;
-    } 
-    // check output of what's in our difs object (expecting all the candidates)
-    // console.log(difs);
-    // console.log('candidates array', candidates)
+    // Iterate the candidates' scores
+    candidatesScores.forEach(function (cCandidate, index)  {
+        // Make the difference
+        var cDiff = Math.abs(userScore - cCandidateScore.score);
+
+        // Check if the current diffrence is lower than lowestDiff
+        if (cDiff < lowestDiff) {
+          // Update the lowest difference
+          lowestDiff = cDiff;
+          // ...and also update the index (we need it later)
+          lastMachingIndex = index;
+        }
+    });
+
+    // Use the index we found to get the correct candidate match
+    return candidates[lastMachingIndex];
+    // End of solution 1
+
+    // Solution 2 (e.g. in case you want to make a top 3)
+    // Make the differences between the user score and candidates' scores
+    var userDiffs = candidatesScores.map(function (cCandidateScore, index) {
+          // 
+        return {
+          // Get the difference
+          diff:  Math.abs(userScore - cCandidateScore.score),
+          
+          // Save the candidate index (because we are sorting this
+          // array and we still need the index)
+          candidateIndex: index,
+
+          // For convenience, save the name also
+          name: cCandidateScore.name
+        };
+    }).sort(function (a, b) {
+      // Finally, sort the array
+      return a.diff >  b.diff;
+    });
+
+    // Before sorting, the array contains the indexes sorted (because we justm mapped the candidatesScores array)
+    // [{ diff:  0.1, candidateIndex:  0, name:  ...}, { diff:  0.03, candidateIndex:  1, name:  ...}, ...]
+
+    // After sort
+    // [{ diff:  0.03, candidateIndex:  1, name:  ...}, ..., { diff:  0.1, candidateIndex:  0, name:  ...}]
+    
+    // For example, to get the top 5, you can use:
+    // var top5 = userDiffs.slice(0, 5);
+
+    var lowestDiff = userDiffs[0];
+    var candidateMatch = candidates[lowestDiff.candidateIndex];
     return candidateMatch;
-  };
+  };  
 
   module.exports = generateMatch; 
