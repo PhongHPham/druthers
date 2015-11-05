@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "test",
-    "start": "node ./server/createCandidates.js"
+    "start":  "node server/server",
+    "create-candidates": "node ./server/createCandidates.js uc"
   },
   "repository": {
     "type": "git",
