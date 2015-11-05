@@ -2,7 +2,7 @@
   "name": "druthers",
   "version": "1.0.0",
   "description": "have a presidential candidate picked for you!",
-  "main": "app.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "test",
     "start":  "node server/server",
