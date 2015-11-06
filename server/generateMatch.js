@@ -29,13 +29,13 @@ function getPersonScore (input)  {
     var userScore = getPersonScore(userPersonality);
 
     // Get the candidate scores (an array of objects containing `score` and `name` fields)
-    var candidatesScores = candidates.map(function (cCandidate) {
+    var candidatesScores = candidates.map(function (curCandidate) {
         return {
             // Get the candidate's score
-            score: getPersonScore(cCandidate)
+            score: getPersonScore(curCandidate)
 
             // This is the current candidate  name
-          , name:  cCandidate.name// TODO
+          , name:  curCandidate.name
         };
     });
     // [{ score:  Number, name String}, {...}, ...]
@@ -48,14 +48,14 @@ function getPersonScore (input)  {
     var lastMachingIndex = -1;
 
     // Iterate the candidates' scores
-    candidatesScores.forEach(function (cCandidateScore, index)  {
+    candidatesScores.forEach(function (curCandidateScore, index)  {
         // Make the difference
-        var cDiff = Math.abs(userScore - cCandidateScore.score);
+        var curDiff = Math.abs(userScore - curCandidateScore.score);
 
         // Check if the current diffrence is lower than lowestDiff
-        if (cDiff < lowestDiff) {
+        if (curDiff < lowestDiff) {
           // Update the lowest difference
-          lowestDiff = cDiff;
+          lowestDiff = curDiff;
           // ...and also update the index (we need it later)
           lastMachingIndex = index;
         }
@@ -67,32 +67,24 @@ function getPersonScore (input)  {
 
     // Solution 2 (e.g. in case you want to make a top 3)
     // Make the differences between the user score and candidates' scores
-    var userDiffs = candidatesScores.map(function (cCandidateScore, index) {
+    var userDiffs = candidatesScores.map(function (curCandidateScore, index) {
           // 
         return {
           // Get the difference
-          diff:  Math.abs(userScore - cCandidateScore.score),
+          diff:  Math.abs(userScore - curCandidateScore.score),
           
           // Save the candidate index (because we are sorting this
           // array and we still need the index)
           candidateIndex: index,
 
           // For convenience, save the name also
-          name: cCandidateScore.name
+          name: curCandidateScore.name
         };
     }).sort(function (a, b) {
       // Finally, sort the array
       return a.diff >  b.diff;
     });
 
-    // Before sorting, the array contains the indexes sorted (because we justm mapped the candidatesScores array)
-    // [{ diff:  0.1, candidateIndex:  0, name:  ...}, { diff:  0.03, candidateIndex:  1, name:  ...}, ...]
-
-    // After sort
-    // [{ diff:  0.03, candidateIndex:  1, name:  ...}, ..., { diff:  0.1, candidateIndex:  0, name:  ...}]
-    
-    // For example, to get the top 5, you can use:
-    // var top5 = userDiffs.slice(0, 5);
 
     var lowestDiff = userDiffs[0];
     var candidateMatch = candidates[lowestDiff.candidateIndex];
