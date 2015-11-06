@@ -20,8 +20,6 @@
     <!-- Page Content -->
     <div class="container">
 
-        <hr class="featurette-divider">
-
         <!-- twitter in put and candidate pic-->
         <div class="row" id="about">
           <div ui-view="twitter-input"></div>
@@ -36,6 +34,11 @@
    <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
    <script src="libs/jquery/dist/jquery.min.js"></script>
    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+   <script src="libs/d3/d3.js"></script>
+   <script src="libs/nvd3/build/nv.d3.js"></script>
+   <script src="libs/angular-nvd3/dist/angular-nvd3.js"></script>
+   <link rel="stylesheet" href="libs/nvd3/build/nv.d3.css">
+
 
    <script src="app/app.js"></script>
    <script src="app/controllers/twitterInputController.js"></script>
@@ -43,5 +46,7 @@
    <script src="app/controllers/indexController.js"></script>
    <script src="app/services/services.js"></script>
    <script src="app/directives/candidateDir.js"></script>
+   <script src="app/directives/personalityGraph.js"></script>
+
  </body>
  </html>

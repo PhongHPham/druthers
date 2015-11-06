@@ -1,4 +1,4 @@
-var app = angular.module('druthers', ['ui.router']);
+var app = angular.module('druthers', ['ui.router', 'nvd3']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
 

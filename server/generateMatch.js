@@ -42,27 +42,27 @@ function getPersonScore (input)  {
 
     // This is another way to do it
     // Lowest diff will be the lowest score diffrence
-    var lowestDiff = Infinity;
+    // var lowestDiff = Infinity;
 
-    // Get the correct maching index
-    var lastMachingIndex = -1;
+    // // Get the correct maching index
+    // var lastMachingIndex = -1;
 
-    // Iterate the candidates' scores
-    candidatesScores.forEach(function (curCandidateScore, index)  {
-        // Make the difference
-        var curDiff = Math.abs(userScore - curCandidateScore.score);
+    // // Iterate the candidates' scores
+    // candidatesScores.forEach(function (curCandidateScore, index)  {
+    //     // Make the difference
+    //     var curDiff = Math.abs(userScore - curCandidateScore.score);
 
-        // Check if the current diffrence is lower than lowestDiff
-        if (curDiff < lowestDiff) {
-          // Update the lowest difference
-          lowestDiff = curDiff;
-          // ...and also update the index (we need it later)
-          lastMachingIndex = index;
-        }
-    });
+    //     // Check if the current diffrence is lower than lowestDiff
+    //     if (curDiff < lowestDiff) {
+    //       // Update the lowest difference
+    //       lowestDiff = curDiff;
+    //       // ...and also update the index (we need it later)
+    //       lastMachingIndex = index;
+    //     }
+    // });
 
     // Use the index we found to get the correct candidate match
-    return candidates[lastMachingIndex];
+    //return candidates[lastMachingIndex];
     // End of solution 1
 
     // Solution 2 (e.g. in case you want to make a top 3)
@@ -78,17 +78,27 @@ function getPersonScore (input)  {
           candidateIndex: index,
 
           // For convenience, save the name also
-          name: curCandidateScore.name
+          name: curCandidateScore.name,
+          score: curCandidateScore
         };
     }).sort(function (a, b) {
       // Finally, sort the array
       return a.diff >  b.diff;
     });
 
+    userPersonality.score = userScore;
 
     var lowestDiff = userDiffs[0];
     var candidateMatch = candidates[lowestDiff.candidateIndex];
-    return candidateMatch;
+    return {
+        candidate: candidateMatch,
+        user: userPersonality,
+        top: userDiffs.map(function (c) {
+          c.candidate = candidates[c.candidateIndex];
+          return c;
+        })
+    };
   };  
 
   module.exports = generateMatch; 
+

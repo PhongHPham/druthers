@@ -8,8 +8,9 @@ app.controller('TwitterInputController', ['twitterServices', function (twitterSe
   // var self = this;
   this.getCandidateMatch = function () {
     twitterServices.getMatchWithTwitterHandle(this.twitterHandle)
-      .then(function (candidate) {
-        this.candidate = candidate;
+      .then(function (responseData) {
+        createGraph(responseData);
+        this.candidate = responseData.candidate;
         this.candidateName = 'You\'ve matched with ' + this.candidate.name;
         return this.candidate;
     }.bind(this));
