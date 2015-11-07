@@ -3,7 +3,7 @@
 
 app.controller('TwitterInputController', ['twitterServices', function (twitterServices) {
   this.twitterHandle = null;
-  this.candidateName = 'Enter your twitter handle!';
+  this.candidateName = '';
   // when user submits twitter handle getCandidateMatchpic calls factory function
   // var self = this;
   this.getCandidateMatch = function () {

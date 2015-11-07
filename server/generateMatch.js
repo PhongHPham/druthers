@@ -38,34 +38,7 @@ function getPersonScore (input)  {
           , name:  curCandidate.name
         };
     });
-    // [{ score:  Number, name String}, {...}, ...]
-
-    // This is another way to do it
-    // Lowest diff will be the lowest score diffrence
-    // var lowestDiff = Infinity;
-
-    // // Get the correct maching index
-    // var lastMachingIndex = -1;
-
-    // // Iterate the candidates' scores
-    // candidatesScores.forEach(function (curCandidateScore, index)  {
-    //     // Make the difference
-    //     var curDiff = Math.abs(userScore - curCandidateScore.score);
-
-    //     // Check if the current diffrence is lower than lowestDiff
-    //     if (curDiff < lowestDiff) {
-    //       // Update the lowest difference
-    //       lowestDiff = curDiff;
-    //       // ...and also update the index (we need it later)
-    //       lastMachingIndex = index;
-    //     }
-    // });
-
-    // Use the index we found to get the correct candidate match
-    //return candidates[lastMachingIndex];
-    // End of solution 1
-
-    // Solution 2 (e.g. in case you want to make a top 3)
+   
     // Make the differences between the user score and candidates' scores
     var userDiffs = candidatesScores.map(function (curCandidateScore, index) {
           // 
@@ -83,7 +56,8 @@ function getPersonScore (input)  {
         };
     }).sort(function (a, b) {
       // Finally, sort the array
-      return a.diff >  b.diff;
+      // The sort function should return a positive or negative number
+      return a.diff >  b.diff ?  1  :  -1;
     });
 
     userPersonality.score = userScore;
