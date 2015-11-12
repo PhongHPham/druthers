@@ -31,29 +31,27 @@ function getPersonScore (input)  {
     // Get the candidate scores (an array of objects containing `score` and `name` fields)
     var candidatesScores = candidates.map(function (curCandidate) {
         return {
-            // Get the candidate's score
-            score: getPersonScore(curCandidate)
-
-            // This is the current candidate  name
-          , name:  curCandidate.name
+          // Get the candidate's score
+          score: getPersonScore(curCandidate),
+          // This is the current candidate  name
+          name:  curCandidate.name
         };
     });
    
     // Make the differences between the user score and candidates' scores
     var userDiffs = candidatesScores.map(function (curCandidateScore, index) {
-          // 
-        return {
-          // Get the difference
-          diff:  Math.abs(userScore - curCandidateScore.score),
-          
-          // Save the candidate index (because we are sorting this
-          // array and we still need the index)
-          candidateIndex: index,
+      return {
+        // Get the difference
+        diff:  Math.abs(userScore - curCandidateScore.score),
+        
+        // Save the candidate index (because we are sorting this
+        // array and we still need the index)
+        candidateIndex: index,
 
-          // For convenience, save the name also
-          name: curCandidateScore.name,
-          score: curCandidateScore
-        };
+        // For convenience, save the name also
+        name: curCandidateScore.name,
+        score: curCandidateScore
+      };
     }).sort(function (a, b) {
       // Finally, sort the array
       // The sort function should return a positive or negative number

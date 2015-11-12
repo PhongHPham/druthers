@@ -68,15 +68,16 @@ exports.populateDb = populateDatabase;
 // node createCandidates uc
 // Note:  NEVER  start the server using `node server uc`
 if (process.argv[2] === "uc") {
-  console.log("Using the command line to update candidates.")
+  console.log("Using the command line to update candidates.");
   mongoose.connect(config.mongo_db);
   populateDatabase(function (error, result) {
     mongoose.disconnect();
     if (error) {
+          // check to see if 
           if (Array.isArray(error)) {
             error.forEach(function (cErr) {
                 console.log(cErr);
-            })
+            });
           } else {
             console.log(error);
           }

@@ -111,7 +111,7 @@
       vis.subBars.forEach(function(sBar) {
           sBar.sort(function(a, b) {
               return (a.key1 < b.key1 ? -1 : a.key1 > b.key1 ?
-                  1 : a.key2 < b.key2 ? -1 : a.key2 > b.key2 ? 1 : 0)
+                  1 : a.key2 < b.key2 ? -1 : a.key2 > b.key2 ? 1 : 0);
           });
       });
 
@@ -180,10 +180,10 @@
           .selectAll(".subbar").data(data.subBars[p]).enter()
           .append("rect").attr("class", "subbar")
           .attr("x", 0).attr("y", function(d) {
-              return d.y
+              return d.y;
           })
           .attr("width", b).attr("height", function(d) {
-              return d.h
+              return d.h;
           })
           .style("fill", function(d) {
               return colors[d.key1];
@@ -263,9 +263,9 @@
           .selectAll(".subbar").data(data.subBars[p])
           .transition().duration(500)
           .attr("y", function(d) {
-              return d.y
+              return d.y;
           }).attr("height", function(d) {
-              return d.h
+              return d.h;
           });
   }
 
@@ -312,7 +312,7 @@
                   });
           });
       });
-  }
+  };
 
   bP.selectSegment = function(data, m, s) {
       data.forEach(function(k) {
@@ -348,7 +348,7 @@
           selectedBar.select(".barvalue").style('font-weight', 'bold');
           selectedBar.select(".barpercent").style('font-weight', 'bold');
       });
-  }
+  };
 
   bP.deSelectSegment = function(data, m, s) {
       data.forEach(function(k) {
@@ -364,7 +364,7 @@
           selectedBar.select(".barvalue").style('font-weight', 'normal');
           selectedBar.select(".barpercent").style('font-weight', 'normal');
       });
-  }
+  };
 
   this.bP = bP;
 
@@ -378,77 +378,76 @@
   ];
 
   function createGraph (responseData) {
-        var candidatesTop = responseData.top;
+    var candidatesTop = responseData.top;
 
-        // This will return a value that is computed based on:
-        //  - the global score difference
-        //  - the personality traits' differences: abs(user[trait] - candidate[trait])
-        //  - the position on the top
-        //
-        function computeRelativePersonalityTrait(key, user, candidate, topIndex) {
-            return (5 - candidate.diff) * 100 *
-                Math.abs(1 + user[key] - candidate.candidate[key]) *
-                (candidatesTop.length - topIndex)
-        }
+    // This will return a value that is computed based on:
+    //  - the global score difference
+    //  - the personality traits' differences: abs(user[trait] - candidate[trait])
+    //  - the position on the top
+    //
+    function computeRelativePersonalityTrait(key, user, candidate, topIndex) {
+        return (5 - candidate.diff) * 100 *
+            Math.abs(1 + user[key] - candidate.candidate[key]) *
+            (candidatesTop.length - topIndex);
+    }
 
-        // Initialize the candidate data array
-        // This will contain an array of arrays like this:
-        //
-        // [
-        //   ["User trait", "Candidate name", relativePersonalityTraitValue]
-        // ]
-        var candidate_data = [];
+    // Initialize the candidate data array
+    // This will contain an array of arrays like this:
+    //
+    // [
+    //   ["User trait", "Candidate name", relativePersonalityTraitValue]
+    // ]
+    var candidate_data = [];
 
-        // Iterate the candidates top
-        candidatesTop.forEach(function(currentCandidate, index) {
+    // Iterate the candidates top
+    candidatesTop.forEach(function(currentCandidate, index) {
 
-            // Iterate the personality traits
-            traits.forEach(function(currentTrait) {
+        // Iterate the personality traits
+      traits.forEach(function(currentTrait) {
 
-                // We push the data array
-                // ["trait", "candidate name", value]
-                candidate_data.push([
+          // We push the data array
+          // ["trait", "candidate name", value]
+          candidate_data.push([
 
-                    // Personality trait
-                    currentTrait,
+              // Personality trait
+              currentTrait,
 
-                    // Candidate name
-                    currentCandidate.name,
+              // Candidate name
+              currentCandidate.name,
 
-                    // Relative personality trait value
-                    computeRelativePersonalityTrait(
-                        currentTrait,
-                        responseData.user,
-                        currentCandidate,
-                        index
-                    )
-                ]);
-            });
-        });
+              // Relative personality trait value
+              computeRelativePersonalityTrait(
+                  currentTrait,
+                  responseData.user,
+                  currentCandidate,
+                  index
+              )
+          ]);
+      });
+    });
 
-        var width = 1100,
-            height = 610,
-            margin = {
-                b: 0,
-                t: 40,
-                l: 270,
-                r: 50
-            };
+    var width = 1100,
+      height = 610,
+      margin = {
+          b: 0,
+          t: 40,
+          l: 270,
+          r: 50
+      };
     $("#candidate-match-chart").empty();
-        var svg = d3.select("#candidate-match-chart")
-            .append("svg").attr('width', width).attr('height', (height + margin.b + margin.t))
-            .append("g").attr("transform", "translate(" + margin.l + "," + margin.t + ")");
+    var svg = d3.select("#candidate-match-chart")
+        .append("svg").attr('width', width).attr('height', (height + margin.b + margin.t))
+        .append("g").attr("transform", "translate(" + margin.l + "," + margin.t + ")");
 
-        var data = [{
-            data: bP.partData(candidate_data, 2),
-            id: 'CandidatesMatching',
-            header: ["Your Personality", "Candidate Personality", "Candidates Matching"]
-        }];
+    var data = [{
+        data: bP.partData(candidate_data, 2),
+        id: 'CandidatesMatching',
+        header: ["Your Personality", "Candidate Personality", "Candidates Matching"]
+    }];
 
-        bP.draw(data, svg);
+    bP.draw(data, svg);
 
   }
-
          
-window.createGraph = createGraph;
+  window.createGraph = createGraph;
 })();
