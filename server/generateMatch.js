@@ -43,11 +43,9 @@ function getPersonScore (input)  {
       return {
         // Get the difference
         diff:  Math.abs(userScore - curCandidateScore.score),
-        
         // Save the candidate index (because we are sorting this
         // array and we still need the index)
         candidateIndex: index,
-
         // For convenience, save the name also
         name: curCandidateScore.name,
         score: curCandidateScore

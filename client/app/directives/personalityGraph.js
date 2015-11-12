@@ -384,13 +384,11 @@
     //  - the global score difference
     //  - the personality traits' differences: abs(user[trait] - candidate[trait])
     //  - the position on the top
-    //
     function computeRelativePersonalityTrait(key, user, candidate, topIndex) {
         return (5 - candidate.diff) * 100 *
             Math.abs(1 + user[key] - candidate.candidate[key]) *
             (candidatesTop.length - topIndex);
     }
-
     // Initialize the candidate data array
     // This will contain an array of arrays like this:
     //
@@ -398,31 +396,26 @@
     //   ["User trait", "Candidate name", relativePersonalityTraitValue]
     // ]
     var candidate_data = [];
-
     // Iterate the candidates top
     candidatesTop.forEach(function(currentCandidate, index) {
 
-        // Iterate the personality traits
+      // Iterate the personality traits
       traits.forEach(function(currentTrait) {
 
-          // We push the data array
-          // ["trait", "candidate name", value]
-          candidate_data.push([
-
-              // Personality trait
-              currentTrait,
-
-              // Candidate name
-              currentCandidate.name,
-
-              // Relative personality trait value
-              computeRelativePersonalityTrait(
-                  currentTrait,
-                  responseData.user,
-                  currentCandidate,
-                  index
-              )
-          ]);
+        // We push the data array
+        // ["trait", "candidate name", value]
+        candidate_data.push([
+            // Personality trait
+            currentTrait,
+            // Candidate name
+            currentCandidate.name,
+            // Relative personality trait value
+            computeRelativePersonalityTrait(
+                currentTrait,
+                responseData.user,
+                currentCandidate,
+                index)
+        ]);
       });
     });
 
