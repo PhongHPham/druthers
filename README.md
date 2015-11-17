@@ -72,7 +72,7 @@ config.watson.version = 'v2';
 
 Within the root directory:
 
-Make sure you have npm installed, then ... 
+Make sure you have npm installed, then... 
 
     npm install
     bower install
