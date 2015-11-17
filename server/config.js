@@ -16,8 +16,7 @@ config.twitter.consumer_secret = process.env.TWITTER_CONSUMER_SECRET || credenti
 config.twitter.access_token_key = process.env.TWITTER_ACCESS_TOKEN_KEY || credentials.twitter.access_token_key;
 config.twitter.access_token_secret = process.env.TWITTER_ACCESS_TOKEN_SECRET || credentials.twitter.access_token_secret;
 
-// Watson Personality Insights credentials !!
-
+// Watson Personality Insights credentials
 // formatted for watson-developer-cloud wrapper
 config.watson = {};
 
@@ -27,6 +26,6 @@ config.watson.version = 'v2';
 
 // mongodb
 config.mongo_uri = process.env.OPENSHIFT_MONGODB_DB_URL || 'mongodb://localhost/';
-config.mongo_db = config.mongo_uri + "druthers"
+config.mongo_db = config.mongo_uri + "druthers";
 
 module.exports = config;
