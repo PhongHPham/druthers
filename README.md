@@ -25,23 +25,25 @@
 
 1. Add a file named `credentials.js` to the config folder in your server directory with the following code:
 
-    // twitter credentials
-    var config = {};
-    
-    config.twitter = {};
-    
-    config.twitter.consumer_key = '';
-    config.twitter.consumer_secret = '';
-    config.twitter.access_token_key = '';
-    config.twitter.access_token_secret = '';
-    
-    // Watson Personality Insights credentials 
-    // formatted for watson-developer-cloud wrapper
-    config.watson = {};
-    
-    config.watson.username = '';
-    config.watson.password = '';
-    config.watson.version = 'v2';
+```javascript
+// twitter credentials
+var config = {};
+
+config.twitter = {};
+
+config.twitter.consumer_key = '';
+config.twitter.consumer_secret = '';
+config.twitter.access_token_key = '';
+config.twitter.access_token_secret = '';
+
+// Watson Personality Insights credentials 
+// formatted for watson-developer-cloud wrapper
+config.watson = {};
+
+config.watson.username = '';
+config.watson.password = '';
+config.watson.version = 'v2';
+```
 
 1. You will need to fill out the strings with the relevant keys/authentication credentials from Twitter and IBM Watson respectively. This file is included in the .gitignore as such, it will not be commited to your github.  
 
