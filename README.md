@@ -23,22 +23,22 @@
 1. You'll also need to get your own Twitter API keys by [creating a new app](https://apps.twitter.com/).
 1. Next you'll want to obtain Watson credentials to use the Watson Personality Insight API. Visit [IMB Watson Developer Cloud](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/getting_started/gs-credentials.shtml) to learn how.
 
-1. Add a file named 'credentials.js' to the config folder in your server directory with the following code:
+1. Add a file named `credentials.js` to the config folder in your server directory with the following code:
 
     // twitter credentials
     var config = {};
-
+    
     config.twitter = {};
-
+    
     config.twitter.consumer_key = '';
     config.twitter.consumer_secret = '';
     config.twitter.access_token_key = '';
     config.twitter.access_token_secret = '';
-
+    
     // Watson Personality Insights credentials 
     // formatted for watson-developer-cloud wrapper
     config.watson = {};
-
+    
     config.watson.username = '';
     config.watson.password = '';
     config.watson.version = 'v2';
