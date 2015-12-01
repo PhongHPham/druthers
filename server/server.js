@@ -8,7 +8,7 @@ var config = require("./config");
 // app.use(bodyParser.json());
 // var apiRouter = app.Router();
 
-var logger = function (request, response, next) {
+var logger = function(request, response, next) {
   console.log('Client hit: ' + request.url);
   next();
 };

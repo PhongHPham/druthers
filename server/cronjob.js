@@ -5,8 +5,6 @@ var createCandidates = require("./createCandidates");
 // cronjob.js:
 exports.start = function () {
   var job = new CronJob('30 11 1 * *', function() {
-  // var job = new CronJob('00 * * * * *', function() {
-			// return console.log(42, new Date());
 		createCandidates.populateDb(function (error, result) {
 			if (error) {
 				if (Array.isArray(error)) {

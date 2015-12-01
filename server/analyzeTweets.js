@@ -7,7 +7,7 @@ var Promise = require('bluebird');
 var getTweetsP = Promise.promisify(twitterCall.getFormattedTweetsByHandle);
 var analyzeTweetsP = Promise.promisify(watsonCall.getPersonalityInsights);
 // parseWatson will return object of Big 5 personality traits
-var parseWatson = function (results) {
+var parseWatson = function(results) {
   results = JSON.parse(results);
   // drill down results object to reach the array with Big 5 traits
   var traits = results.tree.children[0].children[0].children;

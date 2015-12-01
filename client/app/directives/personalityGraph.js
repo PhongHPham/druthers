@@ -377,7 +377,7 @@
       "Openness"
   ];
 
-  function createGraph (responseData) {
+  function createGraph(responseData) {
     var candidatesTop = responseData.top;
 
     // This will return a value that is computed based on:
@@ -397,10 +397,10 @@
     // ]
     var candidate_data = [];
     // Iterate the candidates top
-    candidatesTop.forEach(function(currentCandidate, index) {
+    candidatesTop.forEach(function (currentCandidate, index) {
 
       // Iterate the personality traits
-      traits.forEach(function(currentTrait) {
+      traits.forEach(function (currentTrait) {
 
         // We push the data array
         // ["trait", "candidate name", value]

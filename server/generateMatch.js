@@ -1,7 +1,7 @@
 
 // Get the person's score
 // This function will work for candidates and users (input twitter accounts)
-function getPersonScore (input)  {
+function getPersonScore(input)  {
 
   // These are the keys that are used in the score sum
   var keys = [
@@ -23,7 +23,7 @@ function getPersonScore (input)  {
 }
 
   // return image link for lowest difference candidate
-  var generateMatch = function (userPersonality, candidates) {
+  var generateMatch = function(userPersonality, candidates) {
 
     // Get the Twitter user's score
     var userScore = getPersonScore(userPersonality);

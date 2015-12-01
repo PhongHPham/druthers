@@ -7,13 +7,13 @@ var client = new Twitter({
     access_token_secret: twitterKeys.twitter.access_token_secret 
 });
 
-exports.getFormattedTweetsByHandle = function (twitterHandle, callback) {
+exports.getFormattedTweetsByHandle = function(twitterHandle, callback) {
   // params variable to get twitterHandle in format for get method
   var params = {screen_name: twitterHandle};
   // build out a giant string of all the user's tweets
   var giantString = '';
   // use instantiation of Twitter library to get statuses for user
-  client.get('statuses/user_timeline', params, function(error, tweets, response) {
+  client.get('statuses/user_timeline', params, function (error, tweets, response) {
     if (error) {
       callback(error);
     } else { 

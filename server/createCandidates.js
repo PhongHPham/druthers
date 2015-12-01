@@ -21,7 +21,7 @@ var candidates = [['Donald Trump', 'realDonaldTrump', 'https://i.imgur.com/Agz1K
                   ['Ted Cruz', 'tedcruz', 'https://i.imgur.com/JKs2Dhk.jpg']
 ];
 
-function populateDatabase (callback)  {
+function populateDatabase(callback)  {
   callback = callback ||  function (error) {
       if (error) { throw error; }
   };

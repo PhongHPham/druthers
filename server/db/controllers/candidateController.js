@@ -1,7 +1,7 @@
   var Candidate = require('../models/Candidate.js');
 
 // create method
-exports.createOne = function (candidate, callback) {
+exports.createOne = function(candidate, callback) {
   Candidate.findOne({name: candidate.name}, function(error, found) {
     if (error) {
       callback(error);
@@ -14,7 +14,7 @@ exports.createOne = function (candidate, callback) {
 
 };
 
-exports.updateOrCreate = function (candidates, callback) {
+exports.updateOrCreate = function(candidates, callback) {
 
       // This will make sure that there is always a callback function to call
       // (which is not `undefined`)
@@ -33,7 +33,7 @@ exports.updateOrCreate = function (candidates, callback) {
       }
   };
 
-  var updateOrCreateCandidate = function (currentCandidate) {
+  var updateOrCreateCandidate = function(currentCandidate) {
       Candidate.update({
         name: currentCandidate.name
       }, currentCandidate, {
@@ -45,18 +45,18 @@ exports.updateOrCreate = function (candidates, callback) {
   }
 };
 
-exports.createMany = function (candidates, callback) {
+exports.createMany = function(candidates, callback) {
   Candidate.create(candidates, callback);
 };
 
 // retrieveAll method
-exports.retrieveAll = function (callback) {
+exports.retrieveAll = function(callback) {
   Candidate.find({}, callback);
 };
 
 // retrieveById method
-exports.retrieveById = function (id, callback) {
-  Candidate.findOne({id: id}, function(error, found) {
+exports.retrieveById = function(id, callback) {
+  Candidate.findOne({id: id}, function (error, found) {
     if (error) {
       callback(err);
     } else {
@@ -66,7 +66,7 @@ exports.retrieveById = function (id, callback) {
 };
 
 // update method
-exports.updateScore = function (name, newScore, callback) {
+exports.updateScore = function(name, newScore, callback) {
   Candidate.findOneAndUpdate({name: name}, {score: newScore }, {upsert: false, new: true}, function (error, result) {
     if (error) {
       callback(error);
@@ -77,7 +77,7 @@ exports.updateScore = function (name, newScore, callback) {
 };
 
 // delete method
-exports.delete = function (id, callback) {
+exports.delete = function(id, callback) {
   Candidate.findOneAndRemove({_id: id}, function (error, doc) {
     if (error) {
       callback(error);

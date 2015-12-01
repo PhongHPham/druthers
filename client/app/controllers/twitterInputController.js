@@ -6,7 +6,7 @@ app.controller('TwitterInputController', ['twitterServices', function (twitterSe
   this.candidateName = '';
   // when user submits twitter handle getCandidateMatchpic calls factory function
   // var self = this;
-  this.getCandidateMatch = function () {
+  this.getCandidateMatch = function() {
     twitterServices.getMatchWithTwitterHandle(this.twitterHandle)
       .then(function (responseData) {
         createGraph(responseData);
