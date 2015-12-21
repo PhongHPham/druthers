@@ -1,15 +1,14 @@
 
 // Get the person's score
 // This function will work for candidates and users (input personality results object)
-function getPersonScore(input)  {
+function getPersonScore(input) {
 
   // These are the keys that are used in the score sum
   var keys = [
-     "Openness", "Conscientiousness",
-     "Extraversion", "Agreeableness",
-     "Emotional range"
+    'Openness', 'Conscientiousness',
+    'Extraversion', 'Agreeableness',
+    'Emotional range'
   ];
-
   // Initialize the score
   var score = 0;
   // Iterate the keys
@@ -17,7 +16,6 @@ function getPersonScore(input)  {
     // Sum the values
     score += input[keys[i]];
   }
-
   // And finally, return the score
   return score;
 }
