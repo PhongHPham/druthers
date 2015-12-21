@@ -1,12 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-// var twitter = require('./twitter.js');
 var app = express();
 var apiRouter = require('./apiRouter.js');
 var mongoose = require('mongoose');
 var config = require("./config");
-// app.use(bodyParser.json());
-// var apiRouter = app.Router();
 
 var logger = function(request, response, next) {
   console.log('Client hit: ' + request.url);
