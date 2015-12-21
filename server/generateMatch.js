@@ -1,6 +1,6 @@
 
 // Get the person's score
-// This function will work for candidates and users (input twitter accounts)
+// This function will work for candidates and users (input personality results object)
 function getPersonScore(input)  {
 
   // These are the keys that are used in the score sum
