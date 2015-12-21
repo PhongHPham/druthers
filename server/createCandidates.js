@@ -56,7 +56,6 @@ function populateDatabase(callback)  {
     }
     // now new candidate array is used to populate the database 
     candidateController.updateOrCreate(candidatesToSave, function (error, result) {
-      // close db connection after populating with candidates 
       callback(error, result);
     });
   });
@@ -71,6 +70,7 @@ if (process.argv[2] === "uc") {
   console.log("Using the command line to update candidates.");
   mongoose.connect(config.mongo_db);
   populateDatabase(function (error, result) {
+    // close db connection after populating with candidates 
     mongoose.disconnect();
     if (error) {
           // check to see if 
